@@ -1,10 +1,13 @@
+import { text } from "express";
 import mongoose from "mongoose";
 // import User from "./user";
 const postSchema = new mongoose.Schema({
 
     description:{
+       text: {
         type: String,
         required: true
+       }
     },
 
     image:{

@@ -14,8 +14,8 @@ export const createPost = async (createPostObject) => {
   try {
     const description = createPostObject.description;
     const image = createPostObject.image;
-    const post = await uploadPost({ description, image });
-    console.log(`Post created successfully: ${post}`);
+    const post = await uploadPost({ description, image});
+    console.log(`Post create at cloudinary is successfully: ${post}`);
     return post;
   } catch (error) {
     console.error(`Error creating post: ${error}`);
