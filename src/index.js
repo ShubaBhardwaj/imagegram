@@ -1,9 +1,8 @@
 import express from 'express';
 import ConnectDB from './config/dbConfig.js';
-import { postController } from './Controller/postController.modified.js';
-import { uploader } from './config/multerConfig.js';
-import { uploadServer } from './middlewares/multer.middleware.ServerUpload.js';
 import { uploadCloudinery } from './middlewares/multer.middleware.CloudinaryUplad.js';
+import { postController } from './Controller/postContoller.js';
+
 const PORT = 2000;
 
 const app = express();
@@ -31,6 +30,10 @@ app.get('/ping/:name', (req, res) => {
     console.log(req.query); // accessing query
     console.log(req.body); // accessing body
     return res.json({message: 'pong' + ' ' + name});
+});
+
+app.post('/ping', (req, res) => {
+    return res.json({message: 'pong'});
 });
 
 app.listen(PORT, () => {

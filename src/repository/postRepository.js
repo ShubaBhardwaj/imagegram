@@ -1,14 +1,20 @@
 import Post from "../schema/post.js";
 
-
-export const uploadPost = async (description, image)=>{
+// in uploadPost we will create a new post first i did it with async function but it did not work 
+// so i changed it to sync function now it respose and give the output in postman but not giving the description
+export const uploadPost =  ({description, image})=>{
     try{
-        console.log("Creating a new post with:", { description, image });
-        // const post = await Post.create({description, image, user});
+        console.log("Uploading post(Repository) a new post with:", { description, image });
         const newPost = new Post({ description, image});
-        await newPost.save();
-        console.log("Post created successfully:", newPost);
-        return newPost;   
+        newPost.save().then((post) => {
+            console.log("Post created successfully(Repository):", post);
+            return post;
+        }).catch((error) => {
+            // console.error("Error creating post:", error);
+            return { error: 'Failed to create post' }; // return an error object
+        });
+        console.log("Post created successfully(Repository):", newPost);
+        return newPost; 
     }catch(error){
         // console.error("Error creating post:", error);
         return { error: 'Failed to create post' }; // return an error object

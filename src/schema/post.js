@@ -15,12 +15,14 @@ const postSchema = new mongoose.Schema({
         required: true,
     },
 
-    user_id:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-    },
-
 },{timestamps: true,});
 
 const Post = mongoose.model("Post",postSchema);
 export default Post;
+
+
+// we will add user later 
+    // user_id:{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "User",
+    // },

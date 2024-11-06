@@ -1,11 +1,13 @@
 import { createPost } from "../services/postService.js";
 
 export async function postController(req, res){ 
-    console.log('Received request' + req.file);
-   
+    console.log('Received request(At Controller)' + req.file);
+    console.log("reques body is(At Controller):",req.body);
+    console.log(" Image's path is(At Controller):",req.file.path);
+
     const postData = {
-      description: req.body.description?.trim() || "", // convert undefined to empty string if missing
-      image: req.file.path ? req.file.path.toString() : ""
+      description: req.body.description, 
+      image: req.file.path,
   };
    
       //  const post = await createPost({
@@ -21,6 +23,22 @@ export async function postController(req, res){
          data: post
       });
    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       //  const Post = await creatPost({
       //    description: req.body.description,
