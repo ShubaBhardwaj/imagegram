@@ -1,7 +1,7 @@
 import Post from "../schema/post.js";
 
 // in uploadPost we will create a new post first i did it with async function but it did not work 
-// so i changed it to sync function now it respose and give the output in postman but not giving the description
+// so i changed it to  sync function now it respose and give the output in postman but not giving the description
 export const uploadPost =  ({description, image})=>{
     try{
         console.log("Uploading post(Repository) a new post with:", { description, image });
