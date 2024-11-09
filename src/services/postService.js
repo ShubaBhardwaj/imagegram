@@ -26,8 +26,10 @@ export const createPost = async (createPostObject) => {
     }
     const post = await uploadPost(postObject);  
     console.log("post(At service):" , post);
-    if(typeof description === 'string' && typeof image === 'string'){
-    return post;}
+    // if(typeof description === 'string' && typeof image === 'string'){
+    //   console.log("post is returned(At service)");
+    // return post;}
+    return post;
   } catch (error) {
     console.error(`Error creating post: ${error}`);
     throw error;
