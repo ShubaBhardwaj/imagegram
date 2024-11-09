@@ -4,10 +4,8 @@ import mongoose from "mongoose";
 const postSchema = new mongoose.Schema({
 
     description:{
-       text: {
         type: String,
         required: true
-       }
     },
 
     image:{

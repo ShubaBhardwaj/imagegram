@@ -2,22 +2,32 @@ import Post from "../schema/post.js";
 
 // in uploadPost we will create a new post first i did it with async function but it did not work 
 // so i changed it to  sync function now it respose and give the output in postman but not giving the description
-export const uploadPost =  ({description, image})=>{
-    try{
-        console.log("Uploading post(Repository) a new post with:", { description, image });
-        const newPost = new Post({ description, image});
-        newPost.save().then((post) => {
-            console.log("Post created successfully(Repository):", post);
-            return post;
-        }).catch((error) => {
-            // console.error("Error creating post:", error);
-            return { error: 'Failed to create post' }; // return an error object
-        });
-        console.log("Post created successfully(Repository):", newPost);
-        return newPost; 
-    }catch(error){
-        // console.error("Error creating post:", error);
-        return { error: 'Failed to create post' }; // return an error object
+// export const uploadPost =  ({description, image})=>{
+//     try{
+//         console.log("Uploading post(Repository) a new post with:", { description, image });
+//         const newPost = new Post({ description, image});
+//         newPost.save().then((post) => {
+//             console.log("Post created successfully(Repository):", post);
+//             return post;
+//         }).catch((error) => {
+//             // console.error("Error creating post:", error);
+//             return { error: 'Failed to create post' }; // return an error object
+//         });
+//         console.log("Post created successfully(Repository):", newPost);
+//         return newPost; 
+//     }catch(error){
+//         // console.error("Error creating post:", error);
+//         return { error: 'Failed to create post' }; // return an error object
+//     }
+// }
+
+export const uploadPost = async (postObject)=>{
+    try {
+        const post = await Post.create(postObject);
+        return post;
+    } catch (error) {
+        console.log("Somting error in the repository layer: ", error);
+        return null;
     }
 }
 

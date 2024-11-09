@@ -5,17 +5,16 @@ export async function postController(req, res){
     console.log("reques body is(At Controller):",req.body);
     console.log(" Image's path is(At Controller):",req.file.path);
 
-    const postData = {
-      description: req.body.description, 
-      image: req.file.path,
-  };
-   
-      //  const post = await createPost({
-      //    description: req.body.description?.trim(),
-      //      image: req.file.path,
-      //  })
+//     description: req.body.description, 
+//   const postData = {
+//     image: req.file.path,
+// };
+//  const post = await createPost(postData);
 
-       const post = await createPost(postData);
+       const post = await createPost({
+         description: req.body.description?.trim(),
+           image: req.file.path,
+       })
 
        return res.json({ 
          success: true,
