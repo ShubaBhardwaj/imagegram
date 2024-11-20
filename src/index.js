@@ -1,7 +1,6 @@
 import express from 'express';
 import ConnectDB from './config/dbConfig.js';
-import { uploadCloudinery } from './middlewares/multer.middleware.CloudinaryUplad.js';
-import { postController } from './Controller/postContoller.js';
+import apiRouter from './Routers/apiRouter.js';
 
 const PORT = 2000;
 
@@ -11,6 +10,19 @@ app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded());
 
+// app.use('/posts',postRoute);
+// app.use('/user',userRoute);
+// now we going to use the nested routers, because of the clean code
+
+app.use('/api',apiRouter);
+
+
+
+
+
+
+
+
 app.get('/', (req, res) => {
    return res.send('Hello World!');
 });
@@ -19,11 +31,8 @@ app.get('/hello',(req, res) => {
     return res.send('Hello From Shubham!');
 });
 
-app.post('/posts',uploadCloudinery.single('image') , postController);
-// app.post('/posts',uploadServer.single('image') , postController);
-// app.post('/posts',(req, res) => {
-//     return res.json({message: 'post created'});
-// });
+// app.post('/posts',uploadCloudinery.single('image') , postController);  //Now we don't need this because we are using the routers now
+
 
 app.get('/ping/:name', (req, res) => {
     const name = req.params.name;  // example of params

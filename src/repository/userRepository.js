@@ -1,5 +1,13 @@
-import e from "express";
 import User from "../schema/user.js";
+
+export const createUser = async (userObject) => {
+    try{
+        const user = await User.create(userObject);
+        return user;
+    }catch(error){
+        console.log(error);
+    }
+}
 
 export const findUserByEmail = async (email) => {
     try{
